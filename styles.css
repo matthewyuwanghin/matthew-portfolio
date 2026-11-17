@@ -533,6 +533,91 @@ section { padding: 88px 0; position: relative; }
   border-color: transparent;
 }
 
+/* ---------- Tap & Go demo panel ---------- */
+.demo-panel {
+  background:
+    radial-gradient(700px 240px at 90% -20%, rgba(56, 189, 248, 0.12), transparent 60%),
+    var(--surface);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: var(--radius);
+  padding: clamp(22px, 3vw, 32px);
+  margin-bottom: 36px;
+}
+.demo-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.demo-head h3 {
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.demo-head p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 7px;
+  max-width: 580px;
+}
+.demo-note {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  padding: 6px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+  height: fit-content;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s, transform 0.2s;
+}
+.demo-note:hover {
+  background: rgba(251, 191, 36, 0.16);
+  transform: translateY(-1px);
+}
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 20px;
+}
+.demo-step .card-media {
+  aspect-ratio: 9 / 16;
+  border-radius: 14px;
+  border: 1px solid var(--border-soft);
+  background: #0a1322;
+}
+.demo-step figcaption {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-top: 14px;
+  font-weight: 700;
+  font-size: 0.96rem;
+}
+.step-no {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: var(--grad);
+  color: #041018;
+  display: grid;
+  place-items: center;
+  font-size: 0.76rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.demo-desc {
+  color: var(--muted);
+  font-size: 0.86rem;
+  margin-top: 7px;
+  padding-left: 41px;
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -921,6 +1006,8 @@ footer {
 
   section { padding: 64px 0; }
   .projects-grid { grid-template-columns: 1fr; }
+  .demo-grid { grid-template-columns: 1fr; max-width: 380px; margin-inline: auto; }
+  .demo-desc { padding-left: 0; }
   .timeline { padding-left: 26px; }
   .exp-item::before { left: -26px; }
   .hero { min-height: auto; padding-top: calc(var(--nav-h) + 64px); }
