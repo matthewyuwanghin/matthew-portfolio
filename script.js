@@ -5,8 +5,8 @@
 /* ---------- Language toggle (EN / 繁中) ---------- */
 const langToggle = document.getElementById('langToggle');
 const TITLES = {
-  en: 'Matthew Yu Wang Hin — Scrum Master Portfolio',
-  zh: 'Matthew Yu Wang Hin — Scrum Master 作品集'
+  en: 'Matthew Yu Wang Hin — Project Manager / Scrum Master Portfolio',
+  zh: 'Matthew Yu Wang Hin — 項目經理／Scrum Master 作品集'
 };
 
 function setLang(lang) {
