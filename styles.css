@@ -500,6 +500,26 @@ section { padding: 88px 0; position: relative; }
   transform: translateY(-3px);
   box-shadow: var(--shadow);
 }
+/* ---------- Experience company logo ---------- */
+.exp-role-block {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  flex: 1;
+}
+.exp-logo {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  background: #fff;
+  padding: 5px;
+  object-fit: contain;
+  border: 1px solid var(--border-soft);
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(2, 6, 18, 0.35);
+}
+
 .exp-top {
   display: flex;
   justify-content: space-between;
@@ -575,8 +595,23 @@ section { padding: 88px 0; position: relative; }
 .filters {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 10px;
   margin-bottom: 34px;
+}
+.result-count {
+  margin-left: auto;
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-weight: 600;
+  background: rgba(148, 163, 184, 0.06);
+  border: 1px solid var(--border-soft);
+  padding: 8px 15px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+@media (max-width: 780px) {
+  .result-count { margin-left: 0; }
 }
 .filter-btn {
   border: 1px solid var(--border);

@@ -88,19 +88,42 @@ document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el))
 /* ---------- Project filters ---------- */
 const filterBtns = document.querySelectorAll('.filter-btn');
 const cards = document.querySelectorAll('.project-card');
+const demoPanel = document.getElementById('tapgoDemo');
+const grid = document.getElementById('projectsGrid');
+const resultCount = document.getElementById('resultCount');
+
+function applyFilter(f) {
+  let shown = 0;
+  cards.forEach((card) => {
+    const show = f === 'all' || card.dataset.cat === f;
+    card.classList.toggle('hidden', !show);
+    if (show) {
+      shown++;
+      card.classList.remove('visible');
+      // setTimeout: reliable even where requestAnimationFrame is paused
+      setTimeout(() => card.classList.add('visible'), 20);
+    }
+  });
+  // Tap & Go demo only belongs to the All / FinTech views
+  if (demoPanel) demoPanel.style.display = (f === 'all' || f === 'fintech') ? '' : 'none';
+  if (resultCount) {
+    resultCount.dataset.en = `Showing ${shown} of ${cards.length} projects`;
+    resultCount.dataset.zh = `顯示 ${shown} / ${cards.length} 個項目`;
+    resultCount.textContent = currentLang === 'zh' ? resultCount.dataset.zh : resultCount.dataset.en;
+  }
+}
+
 filterBtns.forEach((btn) => {
   btn.addEventListener('click', () => {
     filterBtns.forEach((b) => b.classList.remove('active'));
     btn.classList.add('active');
-    const f = btn.dataset.filter;
-    cards.forEach((card) => {
-      const show = f === 'all' || card.dataset.cat === f;
-      card.classList.toggle('hidden', !show);
-      if (show) {
-        card.classList.remove('visible');
-        requestAnimationFrame(() => card.classList.add('visible'));
-      }
-    });
+    applyFilter(btn.dataset.filter);
+    // bring the grid on screen so the result is immediately visible
+    if (grid) {
+      const r = grid.getBoundingClientRect();
+      const inView = r.top < window.innerHeight * 0.6 && r.bottom > 80;
+      if (!inView) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   });
 });
 
