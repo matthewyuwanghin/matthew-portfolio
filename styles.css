@@ -414,12 +414,15 @@ section { padding: 88px 0; position: relative; }
   color: #a5b4fc;
 }
 
-/* ---------- Profile photo card ---------- */
+/* ---------- Profile photo chip ---------- */
 .profile-card {
   background: var(--surface);
   border: 1px solid var(--border-soft);
   border-radius: var(--radius);
-  padding: 14px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
   transition: border-color 0.25s, transform 0.25s;
 }
 .profile-card:hover {
@@ -427,20 +430,30 @@ section { padding: 88px 0; position: relative; }
   transform: translateY(-3px);
 }
 .profile-card img {
-  width: 100%;
-  aspect-ratio: 1;
+  width: 96px;
+  height: 96px;
+  min-width: 96px;
+  border-radius: 50%;
   object-fit: cover;
-  object-position: center top;
-  border-radius: 12px;
-  border: 1px solid var(--border-soft);
+  object-position: center 18%;
+  border: 2px solid rgba(56, 189, 248, 0.45);
+  box-shadow: 0 6px 20px rgba(2, 6, 18, 0.5);
+  transition: transform 0.25s;
 }
-.profile-card .pc-cap { padding: 14px 6px 6px; }
-.profile-card .pc-cap strong { display: block; font-size: 1rem; font-weight: 700; }
+.profile-card:hover img { transform: scale(1.05); }
+.profile-card .pc-cap { min-width: 0; }
+.profile-card .pc-cap strong {
+  display: block;
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
 .profile-card .pc-cap span {
   display: block;
   color: var(--muted);
-  font-size: 0.85rem;
-  margin-top: 3px;
+  font-size: 0.84rem;
+  margin-top: 4px;
+  line-height: 1.45;
 }
 
 /* ============================================================
