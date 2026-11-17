@@ -88,7 +88,6 @@ document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el))
 /* ---------- Project filters ---------- */
 const filterBtns = document.querySelectorAll('.filter-btn');
 const cards = document.querySelectorAll('.project-card');
-const demoPanel = document.getElementById('tapgoDemo');
 const grid = document.getElementById('projectsGrid');
 const resultCount = document.getElementById('resultCount');
 
@@ -104,8 +103,6 @@ function applyFilter(f) {
       setTimeout(() => card.classList.add('visible'), 20);
     }
   });
-  // Tap & Go demo only belongs to the All / FinTech views
-  if (demoPanel) demoPanel.style.display = (f === 'all' || f === 'fintech') ? '' : 'none';
   if (resultCount) {
     resultCount.dataset.en = `Showing ${shown} of ${cards.length} projects`;
     resultCount.dataset.zh = `顯示 ${shown} / ${cards.length} 個項目`;

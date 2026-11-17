@@ -715,6 +715,12 @@ section { padding: 88px 0; position: relative; }
   padding-left: 41px;
 }
 
+/* wide Tap & Go card — product demo merged into the card */
+.card-wide { grid-column: 1 / -1; }
+.card-wide .card-media { aspect-ratio: 21 / 9; }
+.card-wide .card-body p { max-width: 920px; }
+.card-body .demo-note { align-self: flex-start; }
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
