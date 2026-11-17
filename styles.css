@@ -414,6 +414,35 @@ section { padding: 88px 0; position: relative; }
   color: #a5b4fc;
 }
 
+/* ---------- Profile photo card ---------- */
+.profile-card {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  padding: 14px;
+  transition: border-color 0.25s, transform 0.25s;
+}
+.profile-card:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  transform: translateY(-3px);
+}
+.profile-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 12px;
+  border: 1px solid var(--border-soft);
+}
+.profile-card .pc-cap { padding: 14px 6px 6px; }
+.profile-card .pc-cap strong { display: block; font-size: 1rem; font-weight: 700; }
+.profile-card .pc-cap span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 3px;
+}
+
 /* ============================================================
    EXPERIENCE (timeline)
    ============================================================ */
@@ -506,6 +535,26 @@ section { padding: 88px 0; position: relative; }
   transform: rotate(45deg);
 }
 .exp-bullets li strong { color: var(--text); font-weight: 600; }
+.exp-bullets li.exp-sub {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.84rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  padding-left: 0;
+  margin-top: 10px;
+}
+.exp-bullets li.exp-sub::before { display: none; }
+.exp-desc {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-style: italic;
+  margin-top: 13px;
+  padding: 11px 15px;
+  background: rgba(148, 163, 184, 0.05);
+  border-left: 2px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+}
 
 /* ============================================================
    PROJECTS
@@ -1006,7 +1055,17 @@ footer {
 
   section { padding: 64px 0; }
   .projects-grid { grid-template-columns: 1fr; }
-  .demo-grid { grid-template-columns: 1fr; max-width: 380px; margin-inline: auto; }
+  .demo-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 14px;
+    padding-bottom: 8px;
+    max-width: none;
+    margin-inline: 0;
+  }
+  .demo-step { flex: 0 0 66%; scroll-snap-align: start; }
   .demo-desc { padding-left: 0; }
   .timeline { padding-left: 26px; }
   .exp-item::before { left: -26px; }
