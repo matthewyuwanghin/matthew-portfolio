@@ -542,6 +542,7 @@ section { padding: 88px 0; position: relative; }
   padding: 6px 13px;
   border-radius: 999px;
   white-space: nowrap;
+  flex-shrink: 0;
   height: fit-content;
 }
 .exp-date.now {
@@ -1134,6 +1135,14 @@ footer {
   .hero-stats { grid-template-columns: 1fr 1fr; }
   .btn { width: 100%; justify-content: center; }
   .logo .full { display: none; }
+}
+
+/* Work Experience header: stack role + date on narrow phones
+   (prevents cramped one-word-per-line wrapping and date overlap) */
+@media (max-width: 600px) {
+  .exp-top { flex-direction: column; gap: 10px; }
+  .exp-role-block { flex: none; width: 100%; }
+  .exp-date { align-self: flex-start; }
 }
 
 @media (prefers-reduced-motion: reduce) {
