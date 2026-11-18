@@ -2,40 +2,6 @@
    Matthew Yu Wang Hin — Portfolio interactions
    ============================================================ */
 
-/* ---------- Language toggle (EN / 繁中) ---------- */
-const langToggle = document.getElementById('langToggle');
-const TITLES = {
-  en: 'Matthew Yu Wang Hin — Project Manager / Scrum Master Portfolio',
-  zh: 'Matthew Yu Wang Hin — 項目經理／Scrum Master 作品集'
-};
-
-function setLang(lang) {
-  document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
-  document.querySelectorAll('[data-en]').forEach((el) => {
-    const val = el.dataset[lang];
-    if (val != null) el.innerHTML = val;
-  });
-  langToggle.textContent = lang === 'en' ? '中' : 'EN';
-  langToggle.setAttribute(
-    'aria-label',
-    lang === 'en' ? '切換至繁體中文' : 'Switch to English'
-  );
-  document.title = TITLES[lang];
-  try { localStorage.setItem('portfolio-lang', lang); } catch (e) {}
-}
-
-let currentLang = 'en';
-try {
-  const saved = localStorage.getItem('portfolio-lang');
-  if (saved === 'en' || saved === 'zh') currentLang = saved;
-} catch (e) {}
-setLang(currentLang);
-
-langToggle.addEventListener('click', () => {
-  currentLang = currentLang === 'en' ? 'zh' : 'en';
-  setLang(currentLang);
-});
-
 /* ---------- Sticky nav style ---------- */
 const nav = document.getElementById('nav');
 const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 24);
@@ -104,9 +70,7 @@ function applyFilter(f) {
     }
   });
   if (resultCount) {
-    resultCount.dataset.en = `Showing ${shown} of ${cards.length} projects`;
-    resultCount.dataset.zh = `顯示 ${shown} / ${cards.length} 個項目`;
-    resultCount.textContent = currentLang === 'zh' ? resultCount.dataset.zh : resultCount.dataset.en;
+    resultCount.textContent = `Showing ${shown} of ${cards.length} projects`;
   }
 }
 
